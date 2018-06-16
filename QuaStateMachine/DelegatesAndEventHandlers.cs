@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace QuaStateMachine {
     public delegate void StateMachineDelegate();
     public delegate void StateChanged(IState priorState, IState formerState);
+    public delegate void StateChanged<S>(IState<S> priorState, IState<S> formerState);
 
     public delegate void TransitionStart(ITransition transition, TransitionEventArgs args);
     public class TransitionEventArgs : EventArgs {

@@ -11,6 +11,7 @@ namespace QuaStateMachine {
         internal Dictionary<S, Dictionary<S, Transition<S, int, G>>> internalTransitions;
 
         public event StateChanged OnStateChanged;
+        public event StateChanged<S> OnStateChangedGeneric;
 
         public StateMachine() {
             SM = new StateMachine<S, int, G>();
@@ -21,6 +22,7 @@ namespace QuaStateMachine {
 
         private void SM_OnStateChanged(IState priorState, IState formerState) {
             OnStateChanged?.Invoke(priorState, formerState);
+            OnStateChangedGeneric?.Invoke(priorState as IState<S>, formerState as IState<S>);
         }
 
         #region State Creation Adapter

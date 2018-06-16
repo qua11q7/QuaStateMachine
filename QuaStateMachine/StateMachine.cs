@@ -17,6 +17,7 @@ namespace QuaStateMachine {
 
         // TODO YO : OnTerminate
         public event StateChanged OnStateChanged;
+        public event StateChanged<S> OnStateChangedGeneric;
 
         public StateMachine() {
             states = new Dictionary<S, State<S, T, G>>();
@@ -420,10 +421,9 @@ namespace QuaStateMachine {
             return states.Values.Where(s => s.IsCurrentState).ToList<IState>();
         }
 
-        internal void OnChildStateChanged(IState priorState, IState formerState) {
-            if (OnStateChanged != null) {
-                OnStateChanged.Invoke(priorState, formerState);
-            }
+        internal void FireOnStateChanged(IState priorState, IState formerState) {
+            OnStateChanged?.Invoke(priorState, formerState);
+            OnStateChangedGeneric?.Invoke(priorState as IState<S>, formerState as IState<S>);
         }
 
         internal void EmitSignal(G signalName) {
@@ -450,9 +450,7 @@ namespace QuaStateMachine {
                     CurrentState = transition.EndState;
                     CurrentState.EnterState();
 
-                    if (OnStateChanged != null) {
-                        OnStateChanged.Invoke(transition.StartState, transition.EndState);
-                    }
+                    FireOnStateChanged(transition.StartState, transition.EndState);
                     return true;
                 }
             }

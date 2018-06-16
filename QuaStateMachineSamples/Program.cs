@@ -30,6 +30,7 @@ namespace QuaStateMachineSamples {
         // TRANSITIONLESS SAMPLES
         static StopwatchTransitionlessDemo stopwatchTransitionlessDemo = new StopwatchTransitionlessDemo();
         static CameraTransitionlessDemo cameraTransitionlessDemo = new CameraTransitionlessDemo();
+        static KeyboardTransitionlessDemo keyboardTransitionlessDemo = new KeyboardTransitionlessDemo();
         // TODO : Add more samples
 
         static void Main(string[] args) {
@@ -70,6 +71,9 @@ namespace QuaStateMachineSamples {
                         break;
                     case Samples.CameraTransitionless:
                         cameraTransitionlessDemo.Start();
+                        break;
+                    case Samples.KeyboardTransitionless:
+                        keyboardTransitionlessDemo.Start();
                         break;
                     case Samples.EndOfSamples:
                         break;
@@ -117,6 +121,7 @@ namespace QuaStateMachineSamples {
             // TRANSITIONLESS
             StopwatchTransitionless,
             CameraTransitionless,
+            KeyboardTransitionless,
             EndOfSamples
         }
     }

@@ -21,7 +21,7 @@ namespace QuaStateMachine {
 
         internal void ConnectStateChangedEvent() {
             if (OrthogonalOf.SM != null)
-                SM.OnStateChanged += OrthogonalOf.SM.OnChildStateChanged;
+                SM.OnStateChanged += OrthogonalOf.SM.FireOnStateChanged;
         }
     }
 }
