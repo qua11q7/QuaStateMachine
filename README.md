@@ -8,12 +8,13 @@ Stopwatch state machine diagram is shown below:
 [![1_Stopwatch.jpg](https://s33.postimg.cc/gdwgr7dvz/1_Stopwatch.jpg)](https://postimg.cc/image/y3y5c8rgr/)
 
 In this sample diagram, there are 3 *States* and 2 *Signals*:
-#####States
+
+##### States
 - Active
 - Stopped
 - Running
 
-#####Signals
+##### Signals
 - Reset
 - StartStop
 
@@ -256,7 +257,7 @@ In this sample, orthogonal states usage will be shown. Keyboard samples state ma
 
 It can be seen from the diagram above, there are 7 states and 3 signals. Orthogonal regions are shown as dashed lines. Each orthogonal region has its own inital state. This diagrams implementation will be given with the transitionless creation of state machine.
 
-###Keyboard Implementation
+### Keyboard Implementation
 
 ```csharp
 StateMachine<States, Signals> SM;
